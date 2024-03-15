@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthManager : MonoBehaviour
 {
@@ -12,11 +14,13 @@ public class HealthManager : MonoBehaviour
 
     public bool gameEnded = false; // Oyunun sonlandırıldığı bilgisi
 
+    public TextMeshProUGUI readyText; // Hazır metin nesnesi
+
     void Start()
     {
         currentHealth = maxHealth; // Başlangıçta canı maksimuma ayarla
     }
-
+     
     void OnTriggerEnter2D(Collider2D other)
     {
         // Tetiklenen collider'ın etiketini kontrol et
@@ -29,7 +33,6 @@ public class HealthManager : MonoBehaviour
                 hearts.RemoveAt(hearts.Count - 1); // Listeden kalbi kaldır
                 currentHealth--; // Can miktarını azalt
                 ResetBallPosition(); // Topu başlangıç konumuna getir
-                StartCoroutine(FreezeGameForSeconds(2f)); // Oyunu 2 saniye boyunca dondur
                 gameEnded = true;
             }
             else
@@ -38,7 +41,7 @@ public class HealthManager : MonoBehaviour
             }
             Debug.Log("Remaining health: " + currentHealth);
 
-            if (!gameEnded)
+            if (gameEnded)
             {
                 EndGame();
             }
@@ -53,14 +56,25 @@ public class HealthManager : MonoBehaviour
 
     public void EndGame()
     {
-        gameEnded = false;
-        Debug.Log(gameEnded);
+    Debug.Log("END GAME DEN GELIYORUM");
+    StartCoroutine(FreezeGameForSeconds(3f));
     }
 
-    IEnumerator FreezeGameForSeconds(float duration)
-    {
-        Time.timeScale = 0f; // Oyun zamanını durdur
-        yield return new WaitForSecondsRealtime(duration); // Belirli bir süre beklet
-        Time.timeScale = 1f; // Oyun zamanını normale geri döndür
-    }
+IEnumerator FreezeGameForSeconds(float duration)
+{
+    Time.timeScale = 0f; // Oyun zamanını durdur
+    readyText.text = "3";
+    yield return new WaitForSecondsRealtime(1f);
+
+    readyText.text = "2";
+    yield return new WaitForSecondsRealtime(1f);
+
+    readyText.text = "1";
+    yield return new WaitForSecondsRealtime(1f);
+
+    readyText.text = "Ready!";
+    yield return new WaitForSecondsRealtime(1f);
+    readyText.text = "";
+    Time.timeScale = 1f; // Oyun zamanını normale geri döndür
+}
 }

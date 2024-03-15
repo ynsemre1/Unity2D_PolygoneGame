@@ -17,7 +17,6 @@ public class BallScript : MonoBehaviour
         {
             if (healthManager.gameEnded)
             {
-                Debug.Log("BallScript Test");
                 // Oyun bitti
                 BaslangicYonu();
             }
