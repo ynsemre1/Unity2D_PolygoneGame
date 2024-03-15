@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ButtonHover : MonoBehaviour
 {
-    // Gizlemek veya görünür yapmak istediğiniz GameObject
-    public GameObject targetObject;
-
-    // GameObject'i görünür yapmak için
     public void ShowObject()
     {
         gameObject.SetActive(true);

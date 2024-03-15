@@ -9,6 +9,8 @@ public class BallScript : MonoBehaviour
     public float baslangicKuvvet; // Topun baslangic itme kuvveti
     public HealthManager[] targetScriptReference; //HealthManager scripti için referans
 
+    bool baslangicItildi = false; // Başlangıçta itme işlemi gerçekleşti mi?
+
     void Update()
     {
         // BallScript içerisinde HealthManager referansına ulaş
@@ -22,8 +24,6 @@ public class BallScript : MonoBehaviour
             }
         }
     }
-
-    bool baslangicItildi = false; // Başlangıçta itme işlemi gerçekleşti mi?
 
     void BaslangicYonu()
     {
@@ -39,6 +39,6 @@ public class BallScript : MonoBehaviour
             ballRigidbody.AddForce(initialForce, ForceMode2D.Impulse);
 
             baslangicItildi = true; // Başlangıç itme işlemi tamamlandı
-        }
+            }
     }
 }

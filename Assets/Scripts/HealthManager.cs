@@ -14,13 +14,18 @@ public class HealthManager : MonoBehaviour
 
     public bool gameEnded = false; // Oyunun sonlandırıldığı bilgisi
 
+    private bool gameFullEnded = false; // Oyunun tamemen bittiği bilgisi
+
     public TextMeshProUGUI readyText; // Hazır metin nesnesi
+
+    private int sayac = 0;
+
 
     void Start()
     {
         currentHealth = maxHealth; // Başlangıçta canı maksimuma ayarla
     }
-     
+
     void OnTriggerEnter2D(Collider2D other)
     {
         // Tetiklenen collider'ın etiketini kontrol et
@@ -34,16 +39,21 @@ public class HealthManager : MonoBehaviour
                 currentHealth--; // Can miktarını azalt
                 ResetBallPosition(); // Topu başlangıç konumuna getir
                 gameEnded = true;
+                gameFullEnded = false; // Oyun devam ediyor
             }
             else
             {
+                gameFullEnded = true; // Oyun Tamamen Bitti
                 Time.timeScale = 0;
+                Debug.Log("Oyun Net Bitti");
             }
+
             Debug.Log("Remaining health: " + currentHealth);
 
-            if (gameEnded)
+            if (gameEnded && sayac < 3)
             {
                 EndGame();
+                sayac++;
             }
         }
     }
@@ -56,25 +66,25 @@ public class HealthManager : MonoBehaviour
 
     public void EndGame()
     {
-    Debug.Log("END GAME DEN GELIYORUM");
-    StartCoroutine(FreezeGameForSeconds(3f));
+        Debug.Log("END GAME DEN GELIYORUM");
+        StartCoroutine(FreezeGameForSeconds(3f));
     }
 
-IEnumerator FreezeGameForSeconds(float duration)
-{
-    Time.timeScale = 0f; // Oyun zamanını durdur
-    readyText.text = "3";
-    yield return new WaitForSecondsRealtime(1f);
+    IEnumerator FreezeGameForSeconds(float duration)
+    {
+        Time.timeScale = 0f; // Oyun zamanını durdur
+        readyText.text = "3";
+        yield return new WaitForSecondsRealtime(1f);
 
-    readyText.text = "2";
-    yield return new WaitForSecondsRealtime(1f);
+        readyText.text = "2";
+        yield return new WaitForSecondsRealtime(1f);
 
-    readyText.text = "1";
-    yield return new WaitForSecondsRealtime(1f);
+        readyText.text = "1";
+        yield return new WaitForSecondsRealtime(1f);
 
-    readyText.text = "Ready!";
-    yield return new WaitForSecondsRealtime(1f);
-    readyText.text = "";
-    Time.timeScale = 1f; // Oyun zamanını normale geri döndür
-}
+        readyText.text = "Ready!";
+        yield return new WaitForSecondsRealtime(1f);
+        readyText.text = "";
+        Time.timeScale = 1f; // Oyun zamanını normale geri döndür
+    }
 }
