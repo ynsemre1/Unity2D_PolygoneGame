@@ -409,7 +409,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 80
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 8df2d6cf5cb824eccb50e5f0ec555552, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -493,7 +493,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 80
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 8df2d6cf5cb824eccb50e5f0ec555552, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -685,7 +685,7 @@ MonoBehaviour:
   - {fileID: 6806698165175611682}
   maxHealth: 3
   ball: {fileID: 0}
-  pauseTime: 2
+  gameEnded: 0
 --- !u!1 &8053318495141110076
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 80
+  m_SortingOrder: 70
   m_Sprite: {fileID: 21300000, guid: 8df2d6cf5cb824eccb50e5f0ec555552, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
