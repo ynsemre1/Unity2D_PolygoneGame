@@ -175,6 +175,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 504
       objectReference: {fileID: 0}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1733509555}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: ballRigidbody
+      value: 
+      objectReference: {fileID: 1733509556}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: baslangicKuvvet
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8657107788265578701, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1167,6 +1179,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 432
       objectReference: {fileID: 0}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1733509555}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1229,6 +1245,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 216
       objectReference: {fileID: 0}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1733509555}
     - target: {fileID: 8657107788265578701, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -1254,7 +1274,7 @@ GameObject:
   - component: {fileID: 1029914589}
   - component: {fileID: 1029914590}
   m_Layer: 0
-  m_Name: LineController
+  m_Name: LineandHealthController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1383,35 +1403,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 288
       objectReference: {fileID: 0}
-    - target: {fileID: 8657107788265578701, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1733509555}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7427914637421834435, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1642435042}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
---- !u!1 &1642435041 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7427914637421834435, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
-  m_PrefabInstance: {fileID: 1642435040}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1642435042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1642435041}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d001f9e5f2b943e998818813f7add14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1657680538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1531,7 +1531,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.3
   m_Material: {fileID: 6200000, guid: b270cae2255854bb28cc19d3cca8b39d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1604,7 +1604,7 @@ Transform:
   m_GameObject: {fileID: 1733509555}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.72, y: 0, z: 0}
+  m_LocalPosition: {x: 1.09, y: 2.96, z: 0}
   m_LocalScale: {x: 0.049999997, y: 0.049999997, z: 0.049999997}
   m_ConstrainProportionsScale: 1
   m_Children: []

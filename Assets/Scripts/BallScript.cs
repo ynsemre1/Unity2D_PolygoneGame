@@ -5,19 +5,41 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    void OnCollisionEnter2D(Collision2D collision)
+    public Rigidbody2D ballRigidbody; // Topun Rigidbody bileşeni
+    public float baslangicKuvvet; // Topun baslangic itme kuvveti
+    public HealthManager[] targetScriptReference; //HealthManager scripti için referans
+
+    void Update()
     {
-        // Çarpışan objenin etiketini kontrol et
-        if (collision.gameObject.CompareTag("Finish"))
+        // BallScript içerisinde HealthManager referansına ulaş
+        // Bu referans üzerinden EndGame fonksiyonunu çağırabilirsin
+        foreach (HealthManager healthManager in targetScriptReference)
         {
-            // Oyunu bitirme işlemini gerçekleştir
-            EndGame();
+            if (healthManager.gameEnded)
+            {
+                Debug.Log("BallScript Test");
+                // Oyun bitti
+                BaslangicYonu();
+            }
         }
     }
 
-    void EndGame()
+    bool baslangicItildi = false; // Başlangıçta itme işlemi gerçekleşti mi?
+
+    void BaslangicYonu()
     {
-        // Oyunu yeniden başlat
-        Destroy(gameObject);
+        if (!baslangicItildi)
+        {
+            // Rastgele bir yön belirle (sağa veya sola)
+            float direction = Random.Range(0, 2) == 0 ? -1 : 1;
+
+            // Başlangıç kuvvetini hesapla
+            Vector2 initialForce = new Vector2(direction * baslangicKuvvet, 0f);
+
+            // Topa başlangıç kuvvetini uygula
+            ballRigidbody.AddForce(initialForce, ForceMode2D.Impulse);
+
+            baslangicItildi = true; // Başlangıç itme işlemi tamamlandı
+        }
     }
 }
