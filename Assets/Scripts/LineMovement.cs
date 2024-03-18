@@ -9,6 +9,9 @@ public class LineMovement : MonoBehaviour
     public Transform[] endTransforms; // Hedef konumlar dizisi
     public GameObject[] objectsToColor; // Rengini değiştireceğimiz objelerin listesi
 
+    public GameObject easyButtonEmptyObject;
+    public GameObject normalButtonEmptyObject;
+    public GameObject hardButtonEmptyObject;
 
     void Start()
     {
@@ -32,6 +35,27 @@ public class LineMovement : MonoBehaviour
     void MoveLine(Transform line, Transform endTransform)
     {
         float duration = Random.Range(0.4f, 1f); // Hareket süresi
+
+        if (easyButtonEmptyObject.activeSelf)
+        {
+            Debug.Log("Kolay seviye aktif! Oyun daha yavaş.");
+            // Kolay seviye için ekstra işlemler ekle
+            duration = Random.Range(3f, 4f);
+        }
+        else if (normalButtonEmptyObject.activeSelf)
+        {
+            Debug.Log("Normal seviye aktif! Oyun normal hızda.");
+            // Normal seviye için ekstra işlemler ekle
+            duration = Random.Range(1f, 2f);
+
+        }
+        else if (hardButtonEmptyObject.activeSelf)
+        {
+            Debug.Log("Zor seviye aktif! Oyun daha hızlı.");
+            // Zor seviye için ekstra işlemler ekle
+            duration = Random.Range(0.4f, 1f);
+
+        }
         // DOTween hareket animasyonunu oluştur
         line.DOMove(endTransform.position, duration)
             .SetEase(Ease.Linear)
@@ -61,5 +85,10 @@ public class LineMovement : MonoBehaviour
         {
             Debug.LogWarning(obj.name + " objesinde Renderer bileşeni bulunamadı!");
         }
+    }
+
+    void DifLevel()
+    {
+        
     }
 }

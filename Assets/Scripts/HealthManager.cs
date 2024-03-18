@@ -20,7 +20,6 @@ public class HealthManager : MonoBehaviour
 
     private int sayac = 0;
 
-
     void Start()
     {
         currentHealth = maxHealth; // Başlangıçta canı maksimuma ayarla
@@ -66,7 +65,6 @@ public class HealthManager : MonoBehaviour
 
     public void EndGame()
     {
-        Debug.Log("END GAME DEN GELIYORUM");
         StartCoroutine(FreezeGameForSeconds(3f));
     }
 

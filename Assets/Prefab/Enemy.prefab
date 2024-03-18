@@ -98,7 +98,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1065252049468512017}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c32754e8b57ee40c2a49719fbff18ff7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -263,6 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9203989884911272430}
   - component: {fileID: 5808073129509887621}
+  - component: {fileID: 3844799060948046088}
   m_Layer: 0
   m_Name: soccerPlayer
   m_TagString: Untagged
@@ -337,6 +338,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &3844799060948046088
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859568744110520642}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 11.688174, y: 4.8431664}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 11.81, y: 11.81}
+    newSize: {x: 11.81, y: 11.81}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 36.43038, y: 2.9626503}
+  m_EdgeRadius: 0
 --- !u!1 &6806698165175611682
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,6 +732,7 @@ MonoBehaviour:
   maxHealth: 3
   ball: {fileID: 0}
   gameEnded: 0
+  readyText: {fileID: 0}
 --- !u!1 &8053318495141110076
 GameObject:
   m_ObjectHideFlags: 0

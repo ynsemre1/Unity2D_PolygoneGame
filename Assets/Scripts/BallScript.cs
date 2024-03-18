@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
+     // Beşgenin çizgilerini temsil eden GameObject dizisi
     public Rigidbody2D ballRigidbody; // Topun Rigidbody bileşeni
     public float baslangicKuvvet; // Topun baslangic itme kuvveti
     public HealthManager[] targetScriptReference; //HealthManager scripti için referans
@@ -31,14 +32,14 @@ public class BallScript : MonoBehaviour
         {
             // Rastgele bir yön belirle (sağa veya sola)
             float direction = Random.Range(0, 2) == 0 ? -1 : 1;
-
             // Başlangıç kuvvetini hesapla
             Vector2 initialForce = new Vector2(direction * baslangicKuvvet, 0f);
-
+            ballRigidbody.velocity = Vector3.zero;
+            ballRigidbody.angularVelocity = 0f;
             // Topa başlangıç kuvvetini uygula
             ballRigidbody.AddForce(initialForce, ForceMode2D.Impulse);
-
             baslangicItildi = true; // Başlangıç itme işlemi tamamlandı
-            }
+            Debug.Log("Baslangic Kuvveti Uygulandi");
+        }
     }
 }
