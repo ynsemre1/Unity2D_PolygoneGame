@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+
 
 public class HealthManager : MonoBehaviour
 {
@@ -14,11 +16,21 @@ public class HealthManager : MonoBehaviour
 
     public bool gameEnded = false; // Oyunun sonlandırıldığı bilgisi
 
-    private bool gameFullEnded = false; // Oyunun tamemen bittiği bilgisi
+    public bool gameFullEnded = false; // Oyunun tamemen bittiği bilgisi
 
     public TextMeshProUGUI readyText; // Hazır metin nesnesi
 
     private int sayac = 0;
+
+    public UIController uiScript;
+
+    public GameObject gameEndController;
+
+    public GameObject uiBackground; // Hareket ettirilecek objelerin listesi
+    public GameObject uiGameEnd; // Hareket ettirilecek objelerin listesi
+    public GameObject uiReplay; // Hareket ettirilecek objelerin listesi
+    public GameObject hiddenObject;
+
 
     void Start()
     {
@@ -38,13 +50,21 @@ public class HealthManager : MonoBehaviour
                 currentHealth--; // Can miktarını azalt
                 ResetBallPosition(); // Topu başlangıç konumuna getir
                 gameEnded = true;
-                gameFullEnded = false; // Oyun devam ediyor
+                gameEndController.SetActive(false);
             }
             else
             {
                 gameFullEnded = true; // Oyun Tamamen Bitti
-                Time.timeScale = 0;
                 Debug.Log("Oyun Net Bitti");
+                gameEndController.SetActive(true);
+                Animation animationComponent1 = uiBackground.GetComponent<Animation>();
+                animationComponent1.Play();
+                Animation animationComponent2 = uiGameEnd.GetComponent<Animation>();
+                animationComponent2.Play();
+                Animation animationComponent3 = uiReplay.GetComponent<Animation>();
+                animationComponent3.Play();
+                Time.timeScale = 1;
+
             }
 
             Debug.Log("Remaining health: " + currentHealth);

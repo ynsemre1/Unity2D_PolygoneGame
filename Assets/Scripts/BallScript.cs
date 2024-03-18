@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-     // Beşgenin çizgilerini temsil eden GameObject dizisi
+    // Beşgenin çizgilerini temsil eden GameObject dizisi
     public Rigidbody2D ballRigidbody; // Topun Rigidbody bileşeni
     public float baslangicKuvvet; // Topun baslangic itme kuvveti
     public HealthManager[] targetScriptReference; //HealthManager scripti için referans
 
     bool baslangicItildi = false; // Başlangıçta itme işlemi gerçekleşti mi?
+
+    public GameObject[] renkObjects;
 
     void Update()
     {
@@ -40,6 +42,46 @@ public class BallScript : MonoBehaviour
             ballRigidbody.AddForce(initialForce, ForceMode2D.Impulse);
             baslangicItildi = true; // Başlangıç itme işlemi tamamlandı
             Debug.Log("Baslangic Kuvveti Uygulandi");
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // Temas edilen objenin renk objeleri arasında olup olmadığını kontrol et
+        foreach (GameObject renkObject in renkObjects)
+        {
+            if (other.gameObject == renkObject)
+            {
+                Renderer otherRenderer = other.GetComponent<Renderer>();
+                if (otherRenderer != null)
+                {
+                    // Temas edilen objenin rengini al ve topun rengini ona ayarla
+                    ChangeObjectColor(gameObject, otherRenderer.material.color);
+                    return; // Doğru objeyi bulduğumuzda döngüden çık
+                }
+                else
+                {
+                    Debug.Log("??? " + other.gameObject.name + " objesinde Renderer bileşeni bulunamadı!");
+                }
+            }
+        }
+    }
+
+    void ChangeObjectColor(GameObject obj, Color color)
+    {
+        // Renderer bileşenini al
+        Renderer renderer = obj.GetComponent<Renderer>();
+
+        // Eğer renderer bileşeni varsa
+        if (renderer != null)
+        {
+            // Materyali al ve rengini değiştir
+            Material material = renderer.material;
+            material.color = color;
+        }
+        else
+        {
+            Debug.LogWarning(obj.name + " objesinde Renderer bileşeni bulunamadı!");
         }
     }
 }

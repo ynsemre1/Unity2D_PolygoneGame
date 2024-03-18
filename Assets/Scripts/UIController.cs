@@ -18,6 +18,13 @@ public class UIController : MonoBehaviour
     public bool gameStarted;
     public GameObject gameObjectsToActivateOnStart; // Başlatıldığında aktif olacak oyun nesneleri
 
+    public RectTransform endText;
+    public RectTransform tekrarOynaBut;
+    public RectTransform backgroundEnd;
+
+    public Button testButton;
+    public GameObject gameEndControl;
+
     void Start()
     {
         startButton.onClick.AddListener(MoveUIElements);
@@ -44,7 +51,6 @@ public class UIController : MonoBehaviour
         background.DOAnchorPosY(750, duration).SetEase(Ease.OutBounce).SetDelay(delay * 5);
         Polygone.DOAnchorPosY(750, duration).SetEase(Ease.OutBounce).SetDelay(delay * 2);
     }
-
     void StartGame()
     {
         // StartGameCoroutine işlevini başlat
