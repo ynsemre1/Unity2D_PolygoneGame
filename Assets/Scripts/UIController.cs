@@ -18,7 +18,7 @@ public class UIController : MonoBehaviour
     public bool gameStarted;
     public GameObject gameObjectsToActivateOnStart; // Başlatıldığında aktif olacak oyun nesneleri
     public Rigidbody2D ballRigidbody;
-    public float baslangicKuvvet = 5f;
+    public float baslangicKuvvet = 3f;
 
     void Start()
     {
@@ -54,7 +54,7 @@ public class UIController : MonoBehaviour
 
     IEnumerator StartGameCoroutine()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
 
         // Oyun nesnelerini aktifleştir
         gameObjectsToActivateOnStart.SetActive(true);

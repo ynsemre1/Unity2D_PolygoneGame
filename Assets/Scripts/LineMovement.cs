@@ -40,20 +40,20 @@ public class LineMovement : MonoBehaviour
         {
             Debug.Log("Kolay seviye aktif! Oyun daha yavaş.");
             // Kolay seviye için ekstra işlemler ekle
-            duration = Random.Range(3f, 4f);
+            duration = Random.Range(.8f, 1.2f);
         }
         else if (normalButtonEmptyObject.activeSelf)
         {
             Debug.Log("Normal seviye aktif! Oyun normal hızda.");
             // Normal seviye için ekstra işlemler ekle
-            duration = Random.Range(1f, 2f);
+            duration = Random.Range(.4f, 1f);
 
         }
         else if (hardButtonEmptyObject.activeSelf)
         {
             Debug.Log("Zor seviye aktif! Oyun daha hızlı.");
             // Zor seviye için ekstra işlemler ekle
-            duration = Random.Range(0.4f, 1f);
+            duration = Random.Range(.2f, .6f);
 
         }
         // DOTween hareket animasyonunu oluştur
