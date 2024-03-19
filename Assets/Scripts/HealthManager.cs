@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 
 public class HealthManager : MonoBehaviour
@@ -30,11 +31,19 @@ public class HealthManager : MonoBehaviour
     public GameObject uiGameEnd; // Hareket ettirilecek objelerin listesi
     public GameObject uiReplay; // Hareket ettirilecek objelerin listesi
     public GameObject hiddenObject;
+    public GameObject gameObjectsToActivateOnStart;
 
 
     void Start()
     {
         currentHealth = maxHealth; // Başlangıçta canı maksimuma ayarla
+        Button replayButton = uiReplay.GetComponent<Button>();
+        replayButton.onClick.AddListener(RestartGame);
+    }
+
+    void RestartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -57,14 +66,13 @@ public class HealthManager : MonoBehaviour
                 gameFullEnded = true; // Oyun Tamamen Bitti
                 Debug.Log("Oyun Net Bitti");
                 gameEndController.SetActive(true);
+                hiddenObject.SetActive(false);
                 Animation animationComponent1 = uiBackground.GetComponent<Animation>();
                 animationComponent1.Play();
                 Animation animationComponent2 = uiGameEnd.GetComponent<Animation>();
                 animationComponent2.Play();
                 Animation animationComponent3 = uiReplay.GetComponent<Animation>();
                 animationComponent3.Play();
-                Time.timeScale = 1;
-
             }
 
             Debug.Log("Remaining health: " + currentHealth);
@@ -77,7 +85,7 @@ public class HealthManager : MonoBehaviour
         }
     }
 
-    void ResetBallPosition()
+    public void ResetBallPosition()
     {
         ball.transform.position = Vector3.zero; // Başlangıç konumu (0, 0, 0) olarak ayarlanır
         ball.transform.rotation = Quaternion.identity; // Başlangıç dönüşü (0, 0, 0, 1) olarak ayarlanır

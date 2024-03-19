@@ -7,12 +7,15 @@ public class BallScript : MonoBehaviour
 {
     // Beşgenin çizgilerini temsil eden GameObject dizisi
     public Rigidbody2D ballRigidbody; // Topun Rigidbody bileşeni
-    public float baslangicKuvvet; // Topun baslangic itme kuvveti
+    public float baslangicKuvvet = 3f; // Topun baslangic itme kuvveti
     public HealthManager[] targetScriptReference; //HealthManager scripti için referans
 
     bool baslangicItildi = false; // Başlangıçta itme işlemi gerçekleşti mi?
 
     public GameObject[] renkObjects;
+
+    public float minSpeed = 5f;
+    public float maxSpeed = 10f;
 
     void Update()
     {
@@ -25,6 +28,20 @@ public class BallScript : MonoBehaviour
                 // Oyun bitti
                 BaslangicYonu();
             }
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // Objenin hızını sınırlama
+        float currentSpeed = ballRigidbody.velocity.magnitude;
+        if (currentSpeed < minSpeed)
+        {
+            ballRigidbody.velocity = ballRigidbody.velocity.normalized * minSpeed;
+        }
+        else if (currentSpeed > maxSpeed)
+        {
+            ballRigidbody.velocity = ballRigidbody.velocity.normalized * maxSpeed;
         }
     }
 

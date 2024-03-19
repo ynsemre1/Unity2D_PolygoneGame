@@ -393,6 +393,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1825841810}
     - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: gameObjectsToActivateOnStart
+      value: 
+      objectReference: {fileID: 2041762938}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
       propertyPath: targetAnimObjects.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1530,7 +1534,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &686901291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1699,7 +1703,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &845222038
 RectTransform:
@@ -1844,6 +1848,10 @@ PrefabInstance:
       propertyPath: objectsToMove.Array.data[2]
       value: 
       objectReference: {fileID: 1825841810}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: gameObjectsToActivateOnStart
+      value: 
+      objectReference: {fileID: 2041762938}
     - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
       propertyPath: targetAnimObjects.Array.size
       value: 3
@@ -2207,7 +2215,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &941834298 stripped
 GameObject:
@@ -2330,6 +2338,10 @@ PrefabInstance:
       propertyPath: objectsToMove.Array.data[2]
       value: 
       objectReference: {fileID: 1825841810}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: gameObjectsToActivateOnStart
+      value: 
+      objectReference: {fileID: 2041762938}
     - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
       propertyPath: targetAnimObjects.Array.size
       value: 3
@@ -3450,11 +3462,8 @@ MonoBehaviour:
   startButton: {fileID: 1576228044}
   gameStarted: 0
   gameObjectsToActivateOnStart: {fileID: 2041762938}
-  endText: {fileID: 1158602809}
-  tekrarOynaBut: {fileID: 1825841811}
-  backgroundEnd: {fileID: 2136055180}
-  testButton: {fileID: 1825841812}
-  gameEndControl: {fileID: 1749196334}
+  ballRigidbody: {fileID: 1733509556}
+  baslangicKuvvet: 5
 --- !u!4 &1404474282
 Transform:
   m_ObjectHideFlags: 0
@@ -3844,10 +3853,11 @@ MonoBehaviour:
   readyText: {fileID: 1875337587}
   uiScript: {fileID: 1404474281}
   gameEndController: {fileID: 1749196334}
-  uiBackground: {fileID: 0}
-  uiGameEnd: {fileID: 0}
-  uiReplay: {fileID: 0}
-  hiddenObject: {fileID: 0}
+  uiBackground: {fileID: 2136055179}
+  uiGameEnd: {fileID: 1158602808}
+  uiReplay: {fileID: 1825841810}
+  hiddenObject: {fileID: 1336363055}
+  gameObjectsToActivateOnStart: {fileID: 2041762938}
 --- !u!1 &1576228042
 GameObject:
   m_ObjectHideFlags: 0
@@ -4145,6 +4155,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1825841810}
     - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
+      propertyPath: gameObjectsToActivateOnStart
+      value: 
+      objectReference: {fileID: 2041762938}
+    - target: {fileID: 7431522522776661192, guid: accb4c82060eb4c14a28ced45347e8d1, type: 3}
       propertyPath: targetAnimObjects.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -4429,7 +4443,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.24
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: b270cae2255854bb28cc19d3cca8b39d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4502,7 +4516,7 @@ Transform:
   m_GameObject: {fileID: 1733509555}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 2.96, z: 0}
+  m_LocalPosition: {x: -0.17, y: 2.86, z: 0}
   m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4568,6 +4582,8 @@ MonoBehaviour:
   - {fileID: 1505202508}
   - {fileID: 967412959}
   - {fileID: 941834298}
+  minSpeed: 3
+  maxSpeed: 7
 --- !u!1 &1749196334
 GameObject:
   m_ObjectHideFlags: 0
@@ -5417,7 +5433,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2041762939
 Transform:
   m_ObjectHideFlags: 0

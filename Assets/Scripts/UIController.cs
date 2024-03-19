@@ -17,13 +17,8 @@ public class UIController : MonoBehaviour
     public Button startButton;
     public bool gameStarted;
     public GameObject gameObjectsToActivateOnStart; // Başlatıldığında aktif olacak oyun nesneleri
-
-    public RectTransform endText;
-    public RectTransform tekrarOynaBut;
-    public RectTransform backgroundEnd;
-
-    public Button testButton;
-    public GameObject gameEndControl;
+    public Rigidbody2D ballRigidbody;
+    public float baslangicKuvvet = 5f;
 
     void Start()
     {
@@ -63,6 +58,16 @@ public class UIController : MonoBehaviour
 
         // Oyun nesnelerini aktifleştir
         gameObjectsToActivateOnStart.SetActive(true);
+
+        // Rastgele bir yön belirle (sağa veya sola)
+        float direction = Random.Range(0, 2) == 0 ? -1 : 1;
+        // Başlangıç kuvvetini hesapla
+        Vector2 initialForce = new Vector2(direction * baslangicKuvvet, 0f);
+        ballRigidbody.velocity = Vector3.zero;
+        ballRigidbody.angularVelocity = 0f;
+        // Topa başlangıç kuvvetini uygula
+        ballRigidbody.AddForce(initialForce, ForceMode2D.Impulse);
+        Debug.Log("Baslangic Kuvveti Uygulandi");
     }
 }
 
