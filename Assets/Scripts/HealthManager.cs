@@ -33,7 +33,6 @@ public class HealthManager : MonoBehaviour
     public GameObject hiddenObject;
     public GameObject gameObjectsToActivateOnStart;
 
-
     void Start()
     {
         currentHealth = maxHealth; // Başlangıçta canı maksimuma ayarla

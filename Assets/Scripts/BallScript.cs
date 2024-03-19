@@ -33,7 +33,7 @@ public class BallScript : MonoBehaviour
             trailRenderer = GetComponent<TrailRenderer>();
         }
     }
-    
+
     void Update()
     {
         // BallScript içerisinde HealthManager referansına ulaş

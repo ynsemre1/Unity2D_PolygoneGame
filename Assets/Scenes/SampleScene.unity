@@ -5314,8 +5314,8 @@ MonoBehaviour:
   - {fileID: 1505202508}
   - {fileID: 967412959}
   - {fileID: 941834298}
-  minSpeed: 3
-  maxSpeed: 7
+  minSpeed: 4
+  maxSpeed: 5
   trailRenderer: {fileID: 0}
 --- !u!96 &1733509561
 TrailRenderer:
