@@ -67,6 +67,7 @@ public class HealthManager : MonoBehaviour
                 Debug.Log("Oyun Net Bitti");
                 gameEndController.SetActive(true);
                 hiddenObject.SetActive(false);
+                ball.SetActive(false);
                 Animation animationComponent1 = uiBackground.GetComponent<Animation>();
                 animationComponent1.Play();
                 Animation animationComponent2 = uiGameEnd.GetComponent<Animation>();

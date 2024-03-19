@@ -17,6 +17,23 @@ public class BallScript : MonoBehaviour
     public float minSpeed = 5f;
     public float maxSpeed = 10f;
 
+    public TrailRenderer trailRenderer;
+
+    private Renderer topRenderer;
+
+    void Start()
+    {
+        // Topun Renderer bileşenini al
+        topRenderer = GetComponent<Renderer>();
+
+        // Trail Renderer bileşenini al
+        if (trailRenderer == null)
+        {
+            // Eğer Trail Renderer atanmadıysa, oyun nesnesinden al
+            trailRenderer = GetComponent<TrailRenderer>();
+        }
+    }
+    
     void Update()
     {
         // BallScript içerisinde HealthManager referansına ulaş
@@ -29,6 +46,13 @@ public class BallScript : MonoBehaviour
                 BaslangicYonu();
             }
         }
+
+        // Topun rengini al
+        Color topRengi = topRenderer.material.color;
+
+        // Trail Renderer'in rengini güncelle
+        trailRenderer.startColor = topRengi;
+        trailRenderer.endColor = topRengi;
     }
 
     void FixedUpdate()
